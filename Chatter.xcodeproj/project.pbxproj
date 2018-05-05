@@ -12,6 +12,7 @@
 		95DD4796209D52AC002C1425 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95DD4794209D52AC002C1425 /* Main.storyboard */; };
 		95DD4798209D52AF002C1425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95DD4797209D52AF002C1425 /* Assets.xcassets */; };
 		95DD479B209D52AF002C1425 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95DD4799209D52AF002C1425 /* LaunchScreen.storyboard */; };
+		95DD47A5209D7A93002C1425 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95DD47A4209D7A93002C1425 /* GoogleService-Info.plist */; };
 		9CB4ABC1C77A712C5C67BD25 /* Pods_Chatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B1A5915E97332CD6AC6C75 /* Pods_Chatter.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		95DD479A209D52AF002C1425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95DD479C209D52AF002C1425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95DD47A3209D6989002C1425 /* Chatter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chatter.entitlements; sourceTree = "<group>"; };
+		95DD47A4209D7A93002C1425 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E270D35DBA3C67F848B76289 /* Pods-Chatter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chatter/Pods-Chatter.debug.xcconfig"; sourceTree = "<group>"; };
 		F8B1A5915E97332CD6AC6C75 /* Pods_Chatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,6 +88,7 @@
 				95DD4797209D52AF002C1425 /* Assets.xcassets */,
 				95DD4799209D52AF002C1425 /* LaunchScreen.storyboard */,
 				95DD479C209D52AF002C1425 /* Info.plist */,
+				95DD47A4209D7A93002C1425 /* GoogleService-Info.plist */,
 			);
 			path = Chatter;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95DD479B209D52AF002C1425 /* LaunchScreen.storyboard in Resources */,
+				95DD47A5209D7A93002C1425 /* GoogleService-Info.plist in Resources */,
 				95DD4798209D52AF002C1425 /* Assets.xcassets in Resources */,
 				95DD4796209D52AC002C1425 /* Main.storyboard in Resources */,
 			);
@@ -175,6 +179,9 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -182,6 +189,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -363,10 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5DDA5Y994D;
 				INFOPLIST_FILE = Chatter/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.deveshnema.Chatter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -383,10 +390,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5DDA5Y994D;
 				INFOPLIST_FILE = Chatter/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.deveshnema.Chatter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

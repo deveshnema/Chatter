@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import Firebase
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     //MARK:- Constants
@@ -39,9 +40,22 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         }
         
+        //load the profile pic
         profilePictureView.frame = CGRect(x: (view.frame.width/2 - profilePicWidth/2),y: profilePicY,width: profilePicWidth,height: profilePicHeight);
         profilePictureView.profileID = FBSDKAccessToken.current().userID
         view.addSubview(profilePictureView)
+        
+        //Authenticate Firebase
+        let accessToken = FBSDKAccessToken.current()
+        guard let accessTokenString = accessToken?.tokenString else {return}
+        let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
+        Auth.auth().signIn(with: credentials) { (user, error) in
+            if error != nil {
+                print("Firebase authentication failed")
+                return
+            }
+            print("Successfully authencitaed with Firebase")
+        }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
