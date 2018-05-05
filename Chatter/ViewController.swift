@@ -10,6 +10,17 @@ import UIKit
 import FBSDKLoginKit
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
+    //MARK:- Constants
+    let profilePicWidth : CGFloat = 100
+    let profilePicHeight  : CGFloat = 100
+    let profilePicY  : CGFloat = 100
+    let fbLoginButtonY  : CGFloat = 200
+    let fbLoginButtonHeight  : CGFloat = 50
+    let fbLoginButtonXMargin  : CGFloat = 16
+    
+    let profilePictureView = FBSDKProfilePictureView()
+
+    
     //MARK:- Outlets
 
     //MARK:- Delegate methods
@@ -27,10 +38,15 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
         }
+        
+        profilePictureView.frame = CGRect(x: (view.frame.width/2 - profilePicWidth/2),y: profilePicY,width: profilePicWidth,height: profilePicHeight);
+        profilePictureView.profileID = FBSDKAccessToken.current().userID
+        view.addSubview(profilePictureView)
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Logged out of FB")
+        profilePictureView.removeFromSuperview()
     }
     
 
@@ -40,7 +56,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         //Create the FB login button
         let fbLoginButton = FBSDKLoginButton()
         view.addSubview(fbLoginButton)
-        fbLoginButton.frame = CGRect(x: 16, y: 200, width: view.frame.width - 32, height: 50)
+        fbLoginButton.frame = CGRect(x: fbLoginButtonXMargin, y: fbLoginButtonY, width: view.frame.width - (fbLoginButtonXMargin * 2), height: fbLoginButtonHeight)
         fbLoginButton.delegate = self
         fbLoginButton.readPermissions = ["email", "public_profile"]
     }
