@@ -8,16 +8,16 @@
 
 import UIKit
 import FBSDKLoginKit
-import Firebase
+import FirebaseAuth
 
-class ViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     //MARK:- Constants
     let profilePicWidth : CGFloat = 100
     let profilePicHeight  : CGFloat = 100
     let profilePicY  : CGFloat = 100
     let fbLoginButtonY  : CGFloat = 200
     let fbLoginButtonHeight  : CGFloat = 50
-    let fbLoginButtonXMargin  : CGFloat = 16
+    let fbLoginButtonXMargin  : CGFloat = 60
     
     let profilePictureView = FBSDKProfilePictureView()
 
@@ -51,10 +51,13 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
         Auth.auth().signIn(with: credentials) { (user, error) in
             if error != nil {
-                print("Firebase authentication failed")
+                print("Firebase authentication failed: error")
                 return
             }
             print("Successfully authencitaed with Firebase")
+            //self.navigationController?.pushViewController(MainTabBarViewController(), animated: true)
+            self.dismiss(animated: true, completion: nil)
+            
         }
     }
     

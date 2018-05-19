@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95D4A12020AFE4B900E40458 /* MessagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4A11F20AFE4B900E40458 /* MessagesListViewController.swift */; };
+		95D4A12220AFE5D500E40458 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4A12120AFE5D500E40458 /* ComposeViewController.swift */; };
+		95D4A12420AFE6F100E40458 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4A12320AFE6F100E40458 /* MessageModel.swift */; };
+		95D4A12820AFE76600E40458 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4A12720AFE76600E40458 /* MainTabBarViewController.swift */; };
 		95DD4791209D52AC002C1425 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD4790209D52AC002C1425 /* AppDelegate.swift */; };
-		95DD4793209D52AC002C1425 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD4792209D52AC002C1425 /* ViewController.swift */; };
-		95DD4796209D52AC002C1425 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95DD4794209D52AC002C1425 /* Main.storyboard */; };
+		95DD4793209D52AC002C1425 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD4792209D52AC002C1425 /* LoginViewController.swift */; };
 		95DD4798209D52AF002C1425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95DD4797209D52AF002C1425 /* Assets.xcassets */; };
 		95DD479B209D52AF002C1425 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95DD4799209D52AF002C1425 /* LaunchScreen.storyboard */; };
 		95DD47A5209D7A93002C1425 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95DD47A4209D7A93002C1425 /* GoogleService-Info.plist */; };
@@ -18,10 +21,13 @@
 
 /* Begin PBXFileReference section */
 		0AEB009C3EC4356176432BC3 /* Pods-Chatter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chatter/Pods-Chatter.release.xcconfig"; sourceTree = "<group>"; };
+		95D4A11F20AFE4B900E40458 /* MessagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesListViewController.swift; sourceTree = "<group>"; };
+		95D4A12120AFE5D500E40458 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		95D4A12320AFE6F100E40458 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		95D4A12720AFE76600E40458 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		95DD478D209D52AC002C1425 /* Chatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95DD4790209D52AC002C1425 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95DD4792209D52AC002C1425 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		95DD4795209D52AC002C1425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		95DD4792209D52AC002C1425 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		95DD4797209D52AF002C1425 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95DD479A209D52AF002C1425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95DD479C209D52AF002C1425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +66,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		95D4A12520AFE6F900E40458 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				95D4A12320AFE6F100E40458 /* MessageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		95D4A12620AFE70A00E40458 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				95DD4792209D52AC002C1425 /* LoginViewController.swift */,
+				95D4A11F20AFE4B900E40458 /* MessagesListViewController.swift */,
+				95D4A12120AFE5D500E40458 /* ComposeViewController.swift */,
+				95D4A12720AFE76600E40458 /* MainTabBarViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		95DD4784209D52AC002C1425 = {
 			isa = PBXGroup;
 			children = (
@@ -83,8 +108,8 @@
 			children = (
 				95DD47A3209D6989002C1425 /* Chatter.entitlements */,
 				95DD4790209D52AC002C1425 /* AppDelegate.swift */,
-				95DD4792209D52AC002C1425 /* ViewController.swift */,
-				95DD4794209D52AC002C1425 /* Main.storyboard */,
+				95D4A12520AFE6F900E40458 /* Model */,
+				95D4A12620AFE70A00E40458 /* Controllers */,
 				95DD4797209D52AF002C1425 /* Assets.xcassets */,
 				95DD4799209D52AF002C1425 /* LaunchScreen.storyboard */,
 				95DD479C209D52AF002C1425 /* Info.plist */,
@@ -161,7 +186,6 @@
 				95DD479B209D52AF002C1425 /* LaunchScreen.storyboard in Resources */,
 				95DD47A5209D7A93002C1425 /* GoogleService-Info.plist in Resources */,
 				95DD4798209D52AF002C1425 /* Assets.xcassets in Resources */,
-				95DD4796209D52AC002C1425 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,22 +247,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95DD4793209D52AC002C1425 /* ViewController.swift in Sources */,
+				95D4A12420AFE6F100E40458 /* MessageModel.swift in Sources */,
+				95DD4793209D52AC002C1425 /* LoginViewController.swift in Sources */,
 				95DD4791209D52AC002C1425 /* AppDelegate.swift in Sources */,
+				95D4A12820AFE76600E40458 /* MainTabBarViewController.swift in Sources */,
+				95D4A12020AFE4B900E40458 /* MessagesListViewController.swift in Sources */,
+				95D4A12220AFE5D500E40458 /* ComposeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		95DD4794209D52AC002C1425 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				95DD4795209D52AC002C1425 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		95DD4799209D52AF002C1425 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -373,7 +393,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5DDA5Y994D;
 				INFOPLIST_FILE = Chatter/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.deveshnema.Chatter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -390,7 +413,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5DDA5Y994D;
 				INFOPLIST_FILE = Chatter/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.deveshnema.Chatter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
