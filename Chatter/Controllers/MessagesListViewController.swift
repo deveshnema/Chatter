@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MessagesListViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let cellID = "cellID"
@@ -15,68 +16,80 @@ class MessagesListViewController: UICollectionViewController, UICollectionViewDe
     var messages: [Message]?
     
     func setupData() {
-        let alia = Friend()
-        alia.name = "Alia Bhatt"
-        alia.profileImageName = "alia"
+        let superman = Friend()
+        superman.name = "Superman"
+        superman.profileImageName = "superman"
         
-        let kriti = Friend()
-        kriti.name = "Kriti Sanon"
-        kriti.profileImageName = "kriti"
+        let hulk = Friend()
+        hulk.name = "The Hulk"
+        hulk.profileImageName = "hulk"
         
-        let deepika = Friend()
-        deepika.name = "Deepika Padukone"
-        deepika.profileImageName = "deepika"
+        let batman = Friend()
+        batman.name = "Batman"
+        batman.profileImageName = "batman"
         
-        let katrina = Friend()
-        katrina.name = "Katrina Kaif"
-        katrina.profileImageName = "katrina"
+        let captain = Friend()
+        captain.name = "Captain America"
+        captain.profileImageName = "captain"
+        
+        let flash = Friend()
+        flash.name = "Flash"
+        flash.profileImageName = "flash"
+        
+        let ironman = Friend()
+        ironman.name = "Iron Man"
+        ironman.profileImageName = "ironman"
         
         
+        appendMessage(for: superman, with: "There is a superhero in all of us, we just need the courage to put on the cape.", sent: 2)
+        appendMessage(for: hulk, with: "Hulk...SMASH", sent: 3)
+        appendMessage(for: flash, with: "No, what I mean is, he's got your values. He's got your inner drive to help people do what's right. We're supposed to think we're something we're not until we become that thing. That's that path that Wally's on. I'm not gonna stop him from being the hero he's gonna become. I really don't think you should, either.", sent: 24 * 60)
+        appendMessage(for: batman, with: "It's not who I am underneath, but what I do that defines me.", sent: 26 * 60)
+        appendMessage(for: captain, with: "Alright, listen up. Until we can close that portal, our priority's containment. Barton, I want you on that roof, eyes on everything. Call out patterns and strays. Stark, you got the perimeter. Anything gets more than three blocks out, you turn it back or you turn it to ash.", sent: 24 * 60 * 10)
+        appendMessage(for: ironman, with: "There is no throne, there is no version of this where you come out on top! Maybe your army will come, maybe it's too much for us, but it's all on you. Because if we can't protect the Earth, you can be damn sure we'll avenge it!", sent: 24 * 60 * 30)
         
-        let message = Message()
-        message.friend = alia
-        message.text = "Hi this is Alia Bhatt, nice to meet you!"
-        message.date = Date().addingTimeInterval(-3 * 60)
-        
-        let kritiMessage = Message()
-        kritiMessage.friend = kriti
-        kritiMessage.text = "This is Kriti Sanon, how are you?"
-        kritiMessage.date = Date().addingTimeInterval(-2 * 60)
-        
-        let kritiMessage2 = Message()
-        kritiMessage2.friend = kriti
-        kritiMessage2.text = "Did you watch Bareilly ki barfi?"
-        kritiMessage2.date = Date().addingTimeInterval(-4 * 60)
-        
-        let kritiMessage3 = Message()
-        kritiMessage3.friend = kriti
-        kritiMessage3.text = "What's your next project?"
-        kritiMessage3.date = Date().addingTimeInterval(-6 * 60)
-        
-        let deepikaMessage = Message()
-        deepikaMessage.friend = deepika
-        deepikaMessage.text = "Deepika here! Did you watch Padmavat?"
-        deepikaMessage.date = Date().addingTimeInterval(-24 * 60 * 60)
-        
-        let katrinaMessage = Message()
-        katrinaMessage.friend = katrina
-        katrinaMessage.text = "Koi Tiger Zinda Hai bhi dekhlo!"
-        katrinaMessage.date = Date().addingTimeInterval(-24 * 60 * 60 * 8)
-        
-        messages = [message, kritiMessage, deepikaMessage, kritiMessage2, katrinaMessage, kritiMessage3].sorted(by: { (m1, m2) -> Bool in
+        messages?.sort(by: { (m1, m2) -> Bool in
             m1.date!.compare(m2.date!) == .orderedDescending
         })
+
+    }
+    
+    func appendMessage(for friend: Friend, with text: String, sent before: TimeInterval) {
+        let msg = Message()
+        msg.friend = friend
+        msg.text = text
+        msg.date = Date().addingTimeInterval(-before * 60)
+        if messages?.append(msg) == nil {
+            messages = [msg]
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Recent"
-        //navigationItem.backBarButtonItem?.title = "logout"
-        //navigationItem.backBarButtonItem?.tintColor = UIColor.red
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleLogout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "compose"), style: .plain, target: self, action: #selector(showComposeVC))
         collectionView?.backgroundColor = UIColor.white
         collectionView?.alwaysBounceVertical = true
         collectionView?.register(MessageCell.self, forCellWithReuseIdentifier: cellID)
         setupData()
+        observeMessages()
+    }
+    
+    func observeMessages() {
+        let ref = Database.database().reference().child("messages")
+        ref.observe(.childAdded, with: { (snapshot) in
+            print(snapshot)
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                let message = Message()
+                message.text = dictionary["text"] as? String
+                self.messages?.append(message)
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
+                }
+                
+            }
+        }, withCancel: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,6 +123,16 @@ class MessagesListViewController: UICollectionViewController, UICollectionViewDe
         let layout = UICollectionViewFlowLayout()
         let controller = ComposeViewController(collectionViewLayout: layout)
         controller.friend = messages?[indexPath.item].friend
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func handleLogout() {
+        
+    }
+    
+    @objc func showComposeVC() {
+        let layout = UICollectionViewFlowLayout()
+        let controller = FriendListViewController(collectionViewLayout: layout)
         navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -154,9 +177,10 @@ class MessageCell : BaseCell {
     
     let profileImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 34
         imageView.layer.masksToBounds = true
+        imageView.backgroundColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
         return imageView
     }()
     

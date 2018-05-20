@@ -7,48 +7,48 @@
 //
 
 import UIKit
+import Firebase
 
-class ComposeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ComposeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     let cellID = "cellID"
     var messages: [Message]?
 
+    
+    func appendMessage(for friend: Friend, with text: String, sent before: TimeInterval, isSender: Bool) {
+        let msg = Message()
+        msg.friend = friend
+        msg.text = text
+        msg.date = Date().addingTimeInterval(-before * 60)
+        msg.isSender = isSender
+        if messages?.append(msg) == nil {
+            messages = [msg]
+        }
+    }
+    
     func setupData() {
-        let alia = Friend()
-        alia.name = "Alia Bhatt"
-        alia.profileImageName = "alia"
+        let ironman = Friend()
+        ironman.name = "Iron Man"
+        ironman.profileImageName = "ironman"
         
-        let message = Message()
-        message.friend = alia
-        message.text = "Hi this is Alia Bhatt, nice to meet you! My first movie was Student of the Year! It was not a big hit but hey its getting a sequel so thats kinda a big deal! Dont you think so? I mean only hit movies will go for a sequel. Isnt it?"
-        message.date = Date().addingTimeInterval(-3 * 60)
-        message.isSender = true
+        let captain = Friend()
+        captain.name = "Captain America"
+        captain.profileImageName = "captain"
         
-        let message2 = Message()
-        message2.friend = alia
-        message2.text = "Hi this is Alia Bhatt, nice to meet you! My first movie was Student of the Year! It was not a big hit but hey its getting a sequel so thats kinda a big deal! Dont you think so? I mean only hit movies will go for a sequel. Isnt it? My first movie was Student of the Year! It was not a big hit but hey its getting a sequel so thats kinda a big deal! Dont you think so? I mean only hit movies will go for a sequel. Isnt it?"
-        message2.date = Date().addingTimeInterval(-5 * 60)
+        appendMessage(for: ironman, with: "There is no throne, there is no version of this where you come out on top! Maybe your army will come, maybe it's too much for us, but it's all on you. Because if we can't protect the Earth, you can be damn sure we'll avenge it!", sent: 2, isSender: true)
+       
+        appendMessage(for: captain, with: "You may not be a threat but you should stop pretending to be a hero.", sent: 2, isSender: false)
+
+        appendMessage(for: ironman, with: "What is this? Shakespeare in the park?", sent: 2, isSender: true)
         
-        let kriti = Friend()
-        kriti.name = "Kriti Sanon"
-        kriti.profileImageName = "kriti"
+        appendMessage(for: captain, with: "Alright, listen up. Until we can close that portal, our priority's containment. Barton, I want you on that roof, eyes on everything. Call out patterns and strays. Stark, you got the perimeter. Anything gets more than three blocks out, you turn it back or you turn it to ash.", sent: 2, isSender: false)
         
-        let kritiMessage = Message()
-        kritiMessage.friend = kriti
-        kritiMessage.text = "This is Kriti Sanon, how are you? Hope you are having a good time"
-        kritiMessage.date = Date().addingTimeInterval(-2 * 60)
+        appendMessage(for: ironman, with: "You're just a lab experiment, Rogers. Anything special about you came out of the lab bottles.", sent: 2, isSender: true)
+
         
-        let kritiMessage2 = Message()
-        kritiMessage2.friend = kriti
-        kritiMessage2.text = "Hi there"
-        kritiMessage2.date = Date().addingTimeInterval(-4 * 60)
+
         
-        let kritiMessage3 = Message()
-        kritiMessage3.friend = kriti
-        kritiMessage3.text = "What's your next project? I might me doing a movie in 2019, but not sure what the cast is as of now. If you are interested please contact my on Instagram."
-        kritiMessage3.date = Date().addingTimeInterval(-6 * 60)
-        kritiMessage3.isSender = true
         
-        messages = [message, message2, kritiMessage, kritiMessage2, kritiMessage3].sorted(by: { (m1, m2) -> Bool in
+        messages?.sort(by: { (m1, m2) -> Bool in
             m1.date!.compare(m2.date!) == .orderedDescending
         })
     }
@@ -65,9 +65,11 @@ class ComposeViewController: UICollectionViewController, UICollectionViewDelegat
         return view
     }()
     
-    let inputTextField : UITextField = {
+    lazy var inputTextField : UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter text here"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
     
@@ -81,6 +83,12 @@ class ComposeViewController: UICollectionViewController, UICollectionViewDelegat
     }()
     
     @objc func sendButtonPressed() {
+        let ref = Database.database().reference()
+        
+        let values = ["text" : inputTextField.text!]
+        ref.child("messages").childByAutoId().updateChildValues(values)
+        
+        
         let taylor = Friend()
         taylor.name = "Taylor Swift"
         taylor.profileImageName = "taylor"
@@ -101,6 +109,11 @@ class ComposeViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     var bottomConstraint : NSLayoutConstraint?
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        sendButtonPressed()
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,7 +194,7 @@ class ComposeViewController: UICollectionViewController, UICollectionViewDelegat
                 cell.messageTextView.frame = CGRect(x: 8 + 40, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
                 cell.textBubbleView.frame = CGRect(x: 40, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
                 cell.profileImageView.isHidden = false
-                cell.textBubbleView.backgroundColor = UIColor.lightGray
+                cell.textBubbleView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 cell.messageTextView.textColor = UIColor.black
             }
         }

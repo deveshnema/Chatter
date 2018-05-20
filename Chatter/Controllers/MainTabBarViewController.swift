@@ -20,12 +20,16 @@ class MainTabBarViewController: UITabBarController {
         recentMessagesNavController.tabBarItem.image = #imageLiteral(resourceName: "recent")
 
         
+        let friendsListViewController = FriendListViewController(collectionViewLayout: layout)
+        let friendsListNavController = UINavigationController(rootViewController: friendsListViewController)
+        friendsListNavController.tabBarItem.title = "Friends"
+        friendsListNavController.tabBarItem.image = #imageLiteral(resourceName: "people")
+        
         let dvc1 = createDummyNavController(with: "Calls", image: #imageLiteral(resourceName: "calls"))
         let dvc2 = createDummyNavController(with: "Groups", image: #imageLiteral(resourceName: "groups"))
-        let dvc3 = createDummyNavController(with: "People", image: #imageLiteral(resourceName: "people"))
         let dvc4 = createDummyNavController(with: "Settings", image: #imageLiteral(resourceName: "settings"))
 
-        viewControllers = [recentMessagesNavController, dvc1, dvc2, dvc3, dvc4]
+        viewControllers = [recentMessagesNavController, friendsListNavController, dvc1, dvc2, dvc4]
     }
 
     func createDummyNavController(with title: String, image: UIImage) -> UINavigationController {

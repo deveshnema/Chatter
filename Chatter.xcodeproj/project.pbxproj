@@ -11,6 +11,7 @@
 		95D4A12220AFE5D500E40458 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4A12120AFE5D500E40458 /* ComposeViewController.swift */; };
 		95D4A12420AFE6F100E40458 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4A12320AFE6F100E40458 /* MessageModel.swift */; };
 		95D4A12820AFE76600E40458 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D4A12720AFE76600E40458 /* MainTabBarViewController.swift */; };
+		95D5984C20B159550008C675 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D5984B20B159550008C675 /* FriendListViewController.swift */; };
 		95DD4791209D52AC002C1425 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD4790209D52AC002C1425 /* AppDelegate.swift */; };
 		95DD4793209D52AC002C1425 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DD4792209D52AC002C1425 /* LoginViewController.swift */; };
 		95DD4798209D52AF002C1425 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95DD4797209D52AF002C1425 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		95D4A12120AFE5D500E40458 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		95D4A12320AFE6F100E40458 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		95D4A12720AFE76600E40458 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		95D5984B20B159550008C675 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		95DD478D209D52AC002C1425 /* Chatter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95DD4790209D52AC002C1425 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95DD4792209D52AC002C1425 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				95DD4792209D52AC002C1425 /* LoginViewController.swift */,
 				95D4A11F20AFE4B900E40458 /* MessagesListViewController.swift */,
 				95D4A12120AFE5D500E40458 /* ComposeViewController.swift */,
+				95D5984B20B159550008C675 /* FriendListViewController.swift */,
 				95D4A12720AFE76600E40458 /* MainTabBarViewController.swift */,
 			);
 			path = Controllers;
@@ -205,6 +208,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -215,6 +219,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +256,7 @@
 				95DD4793209D52AC002C1425 /* LoginViewController.swift in Sources */,
 				95DD4791209D52AC002C1425 /* AppDelegate.swift in Sources */,
 				95D4A12820AFE76600E40458 /* MainTabBarViewController.swift in Sources */,
+				95D5984C20B159550008C675 /* FriendListViewController.swift in Sources */,
 				95D4A12020AFE4B900E40458 /* MessagesListViewController.swift in Sources */,
 				95D4A12220AFE5D500E40458 /* ComposeViewController.swift in Sources */,
 			);
