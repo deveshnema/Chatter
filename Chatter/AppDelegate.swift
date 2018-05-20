@@ -20,8 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = MainTabBarViewController()
-        
+        //window?.rootViewController = MainTabBarViewController()
+        window?.rootViewController = LoginViewController()
+
         FirebaseApp.configure()
         // Override point for customization after application launch.
         FBSDKApplicationDelegate.sharedInstance().application(application,

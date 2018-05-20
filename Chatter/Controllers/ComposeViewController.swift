@@ -42,7 +42,7 @@ class ComposeViewController: UICollectionViewController, UICollectionViewDelegat
         
         appendMessage(for: captain, with: "Alright, listen up. Until we can close that portal, our priority's containment. Barton, I want you on that roof, eyes on everything. Call out patterns and strays. Stark, you got the perimeter. Anything gets more than three blocks out, you turn it back or you turn it to ash.", sent: 2, isSender: false)
         
-        appendMessage(for: ironman, with: "You're just a lab experiment, Rogers. Anything special about you came out of the lab bottles.", sent: 2, isSender: true)
+        appendMessage(for: ironman, with: "You're just a lab experiment, Rogers. Anything special about you came out of the lab bottles.", sent: 8, isSender: true)
 
         
 
