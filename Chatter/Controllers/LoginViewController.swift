@@ -22,6 +22,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     let profilePictureView = FBSDKProfilePictureView()
 
     
+    let iconImageView : UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "icons8-thinking-male-80")
+        return imageView
+    }()
+    
     //MARK:- Outlets
 
     //MARK:- Delegate methods
@@ -56,7 +62,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             print("Successfully authencitaed with Firebase")
             //self.navigationController?.pushViewController(MainTabBarViewController(), animated: true)
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
+            self.present(MainTabBarViewController(), animated: true, completion: nil)
             
         }
     }
@@ -70,10 +77,25 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
+        view.addSubview(iconImageView)
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
+        iconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        iconImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60).isActive = true
+        iconImageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        iconImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+
         //Create the FB login button
         let fbLoginButton = FBSDKLoginButton()
         view.addSubview(fbLoginButton)
-        fbLoginButton.frame = CGRect(x: fbLoginButtonXMargin, y: fbLoginButtonY, width: view.frame.width - (fbLoginButtonXMargin * 2), height: fbLoginButtonHeight)
+        //fbLoginButton.frame = CGRect(x: fbLoginButtonXMargin, y: fbLoginButtonY, width: view.frame.width - (fbLoginButtonXMargin * 2), height: fbLoginButtonHeight)\
+        fbLoginButton.removeConstraints(fbLoginButton.constraints)
+
+        fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        fbLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        fbLoginButton.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor, constant: 100 + 30).isActive = true
+        fbLoginButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -(fbLoginButtonXMargin * 2)).isActive = true
+        fbLoginButton.heightAnchor.constraint(equalToConstant: fbLoginButtonHeight).isActive = true
         fbLoginButton.delegate = self
         fbLoginButton.readPermissions = ["email", "public_profile"]
     }
