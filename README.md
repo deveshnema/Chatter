@@ -1,7 +1,7 @@
 # Chatter
 An iOS (Swift 4) Facebook Messenger styled chat App
 
-(Recreating the design style to enhance the learning experience)
+(Recreating the design style only to enhance the learning experience)
 
 ## Detail
 - The App has been styled in the fb messenger style
