@@ -1,5 +1,7 @@
 # Chatter
-An iOS 11 messenger styled chat App
+An iOS (Swift 4) Facebook Messenger styled chat App
+
+(Recreating the design style to enhance the learning experience)
 
 ## Detail
 - The App has been styled in the fb messenger style
@@ -9,6 +11,7 @@ An iOS 11 messenger styled chat App
   - Messages list per friend with friend's profile pic, preview and time-stamp of last message, read acknowledgement profile pic
   - List of friends to compose new message
   - Conversation history
+  - Extensive use of UICollectionView
 
 ## Technology
 - Swift 4
